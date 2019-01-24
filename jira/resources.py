@@ -1028,7 +1028,10 @@ def dict2resource(raw, top=None, options=None, session=None):
                     seq_list.append(seq_elem)
             setattr(top, i, seq_list)
         else:
-            setattr(top, i, j)
+            try:
+                setattr(top, i, j)
+            except Exception as e:
+                logging.info(e)
     return top
 
 
